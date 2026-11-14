@@ -19,7 +19,6 @@ def load_sound(name):
         return pygame.mixer.Sound(path)
     return None
 
-# Несколько вариантов звука обычной клавиши
 key_files = glob.glob(os.path.join(SOUNDS, "key*.wav"))
 key_sounds = [pygame.mixer.Sound(f) for f in key_files]
 
@@ -28,7 +27,6 @@ enter_sound = load_sound("enter.wav")
 return_sound = load_sound("return.wav")
 backspace_sound = load_sound("backspace.wav")
 
-# Клавиши, которые должны издавать обычный звук
 normal_keys = set()
 
 for name in (
@@ -58,7 +56,7 @@ def handle_keyboard(path):
             if event.type != ecodes.EV_KEY:
                 continue
 
-            # 0 = отпускание, 1 = нажатие, 2 = автоповтор
+            # 0 отпускание, 1 нажатие, 2 автоповтор
             if event.value not in (1, 2):
                 continue
 
